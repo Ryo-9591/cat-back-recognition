@@ -11,7 +11,7 @@ MoveNet Lightningを使用した猫背検知Webアプリケーションです。
 
 ## 構成
 
-- **フロントエンド**: HTML + CSS + JavaScript（Webカメラ取得）
+- **フロントエンド**: Next.js + React + TypeScript + shadcn/ui（モダンなUI）
 - **バックエンド**: FastAPI + MoveNet Lightning（姿勢分析API）
 - **コンテナ**: Docker + Docker Compose
 
@@ -49,20 +49,23 @@ Docker Composeを使用する場合は、自動的にフロントエンドも起
 ローカルで実行する場合：
 
 ```bash
-# Pythonの簡易サーバーを使用する場合
 cd frontend
-python -m http.server 8080
+npm install
+npm run dev
 ```
 
-その後、ブラウザで `http://localhost:8080` にアクセスしてください。
+その後、ブラウザで `http://localhost:3000` にアクセスしてください。
+
+**注意**: ローカルで実行する場合、バックエンドAPIが `http://localhost:5000` で起動している必要があります。
 
 ## 使用方法
 
-1. ブラウザでフロントエンドを開く
+1. ブラウザでフロントエンドを開く（Docker使用時: http://localhost:8080、ローカル実行時: http://localhost:3000）
 2. 「カメラ開始」ボタンをクリックしてカメラへのアクセスを許可
 3. カメラの前に立ち、全身が映るようにする
-4. 「姿勢を分析」ボタンをクリック
-5. 姿勢スコアと猫背判定結果が表示される
+4. リアルタイムで姿勢が分析され、結果が表示されます（1秒ごとに自動更新）
+5. または「画像をアップロード」ボタンから画像ファイルを選択して分析することもできます
+6. 姿勢スコアと猫背判定結果が表示されます
 
 ## API エンドポイント
 
