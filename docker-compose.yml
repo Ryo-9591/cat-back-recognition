@@ -1,0 +1,14 @@
+services:
+  posture-guard:
+    build: .
+    container_name: posture_guard
+    ports:
+      - "8501:8501"
+    # devices:
+    #   - "/dev/video0:/dev/video0" # Not needed for WebRTC
+    volumes:
+      # Mount src for hot-reloading during development
+      - ./src:/app/src
+    environment:
+      - DISPLAY=${DISPLAY}
+    restart: unless-stopped
